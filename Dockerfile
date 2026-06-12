@@ -1,7 +1,10 @@
 FROM oven/bun:1.3-alpine
 
+# Ensure bun global bin is in PATH
+ENV PATH="/root/.bun/bin:$PATH"
+
 # Install gbrain from GitHub (NEVER from npm)
-RUN bun install -g github:garrytan/gbrain
+RUN bun install -g github:garrytan/gbrain && gbrain --version
 
 # Expose port
 EXPOSE 3000
